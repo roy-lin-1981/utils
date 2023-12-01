@@ -14,17 +14,21 @@ const (
 	Fatal
 )
 
-var Instance *LogManager
+var instance *LogManager
 
 type LogManager struct {
 	logLevel LogLevel
 }
 
 func NewLogManager() *LogManager {
-	Instance = &LogManager{
+	instance = &LogManager{
 		logLevel: Debug,
 	}
-	return Instance
+	return instance
+}
+
+func GetInstance() *LogManager {
+	return instance
 }
 
 func (lm *LogManager) SetLogLevel(level LogLevel) {
